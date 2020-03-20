@@ -5,7 +5,12 @@ const util = require('util');
 const { exec } = mongoose.Query.prototype;
 // Setup REDIS + promisify get function
 const redisUrl = 'redis://127.0.0.1:6379';
-const client = redis.createClient(redisUrl);
+const client = redis.createClient(redisUrl)
+if (client) {
+  console.log('Connection to the Redis is successful!')
+}
+else { console.error("err") }
+
 client.hget = util.promisify(client.hget);
 
 // REMINDER https://bit.ly/2qEmUkN
@@ -50,6 +55,7 @@ mongoose.Query.prototype.exec = async function execAndCache(...args) {
   }
 
   // If not there execute query and cache result.
+  console.log("MONGO");
   const result = await exec.apply(this, args);
   client.hset(this.hashKey, key, JSON.stringify(result));
   return result;
