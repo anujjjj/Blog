@@ -1,15 +1,39 @@
 const mongoose = require('mongoose');
 const redis = require('redis');
 const util = require('util');
+var Redis = require("ioredis");
 
 const { exec } = mongoose.Query.prototype;
 // Setup REDIS + promisify get function
-const redisUrl = 'redis://127.0.0.1:6379';
-const client = redis.createClient(redisUrl)
-if (client) {
-  console.log('Connection to the Redis is successful!')
-}
-else { console.error("err") }
+// const redisUrl = 'redis://127.0.0.1:6379';
+// const client = redis.createClient(redisUrl)
+var client = new Redis.Cluster([
+  {
+    port: 7000,
+    host: "127.0.0.1"
+  },
+  {
+    port: 7001,
+    host: "127.0.0.1"
+  },
+  {
+    port: 7002,
+    host: "127.0.0.1"
+  },
+  {
+    port: 7003,
+    host: "127.0.0.1"
+  },
+  {
+    port: 7004,
+    host: "127.0.0.1"
+  },
+  {
+    port: 7005,
+    host: "127.0.0.1"
+  }
+]);
+
 
 client.hget = util.promisify(client.hget);
 
@@ -25,6 +49,10 @@ mongoose.Query.prototype.cache = function cache(options = {}) {
   // this equals query instance
   this.useCache = true;
   this.hashKey = JSON.stringify(options.key || '');
+
+  console.log("hash ", this.hashKey);
+  console.log("options ", options.key)
+
   // return makes it chainable
   return this;
 };
@@ -36,7 +64,10 @@ mongoose.Query.prototype.exec = async function execAndCache(...args) {
   const key = JSON.stringify(Object.assign({}, this.getQuery(), {
     collection: this.mongooseCollection.name
   }));
-  // Search cache.
+  // Search cache
+  const hkey = this.hashkey;
+  console.log("hkey ", hkey);
+  console.log("key ", key);
   const cachedValue = await client.hget(this.hashKey, key);
   if (cachedValue) {
 
@@ -45,6 +76,7 @@ mongoose.Query.prototype.exec = async function execAndCache(...args) {
     // Function expects to return a Mongoose object.
     // Mongoose model with properties like get, get, etc.
     const doc = JSON.parse(cachedValue);
+    console.log(doc)
 
     /* eslint-disable */
     const cachedDocument = Array.isArray(doc)

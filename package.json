@@ -23,6 +23,7 @@
     "concurrently": "*",
     "cookie-session": "*",
     "express": "*",
+    "ioredis": "^4.16.0",
     "jest": "*",
     "lodash": "*",
     "migrate-mongoose": "*",
