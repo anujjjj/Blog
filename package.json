@@ -26,7 +26,7 @@
     "jest": "^22.1.4",
     "lodash": "^4.17.5",
     "migrate-mongoose": "^3.2.2",
-    "mongoose": "^4.11.1",
+    "mongoose": "^5.7.5",
     "nodemon": "^1.11.0",
     "passport": "*",
     "passport-google-oauth20": "^2.0.0",
