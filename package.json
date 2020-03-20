@@ -18,31 +18,25 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-sdk": "^2.227.1",
-    "body-parser": "^1.17.2",
-    "concurrently": "^3.5.0",
-    "cookie-session": "^2.0.0-beta.2",
-    "express": "^4.15.3",
-    "jest": "^22.1.4",
-    "lodash": "^4.17.5",
-    "migrate-mongoose": "^3.2.2",
-    "mongoose": "^4.11.1",
-    "nodemon": "^1.11.0",
+    "aws-sdk": "*",
+    "body-parser": "*",
+    "concurrently": "*",
+    "cookie-session": "*",
+    "express": "*",
+    "jest": "*",
+    "lodash": "*",
+    "migrate-mongoose": "*",
+    "mongoose": "*",
+    "nodemon": "*",
     "passport": "*",
-    "passport-google-oauth20": "^2.0.0",
-    "path-parser": "^2.0.2",
-    "puppeteer": "^1.0.0",
-    "redis": "^2.8.0",
-    "uuid": "^3.2.1"
+    "passport-google-oauth20": "*",
+    "path-parser": "*",
+    "puppeteer": "*",
+    "redis": "*",
+    "uuid": "*"
   },
   "devDependencies": {
-    "babel-eslint": "^8.2.3",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb": "^16.1.0",
-    "eslint-plugin-import": "^2.11.0",
-    "eslint-plugin-jsx-a11y": "^6.0.3",
-    "eslint-plugin-react": "^7.7.0",
-    "keygrip": "^1.0.2",
-    "safe-buffer": "^5.1.1"
+    "keygrip": "*",
+    "safe-buffer": "*"
   }
 }
