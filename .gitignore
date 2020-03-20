@@ -1,0 +1,8 @@
+node_modules
+nohup.out
+.DS_Store
+config/dev.js
+client/.babelrc
+dev.js
+config/dev.js
+config/secret.js
