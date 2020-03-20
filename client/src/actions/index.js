@@ -1,5 +1,9 @@
 import axios from 'axios';
 import { FETCH_USER, FETCH_BLOGS, FETCH_BLOG } from './types';
+import axiosTiming from 'axios-timing'
+
+axiosTiming(axios, console.log)
+
 
 export const fetchUser = () => async (dispatch) => {
   const res = await axios.get('/api/current_user');
