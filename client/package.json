@@ -15,7 +15,7 @@
     "axios-timing": "^1.0.2",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
-    "lodash": "^4.17.5",
+    "lodash": "^4.17.19",
     "materialize-css": "^0.100.2",
     "react": "^16.0.0-alpha.13",
     "react-dom": "^16.0.0-alpha.13",
